@@ -1,0 +1,15 @@
+/node_modules
+/frontend/node_modules
+/coverage
+/build
+/staticfiles
+/.vscode
+/venv
+
+
+*.pyc
+*.sqlite3
+*.png
+*.jpg
+*.svg
+package-lock.json
