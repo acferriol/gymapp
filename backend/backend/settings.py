@@ -41,9 +41,12 @@ INSTALLED_APPS = [
     'utilities',
     ##-extra-apps-##
     'django_extensions',
+    'phonenumber_field',
     'django_filters',
     'rest_framework'
 ]
+
+AUTH_USER_MODEL = 'actors.CustomUser'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
