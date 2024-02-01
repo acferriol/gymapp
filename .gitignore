@@ -13,4 +13,5 @@
 *.png
 *.jpg
 *.svg
+*.pdf
 package-lock.json

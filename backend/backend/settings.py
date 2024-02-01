@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'actors',
+    'utilities',
+    ##-extra-apps-##
+    'django_extensions',
+    'django_filters',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -48,6 +54,24 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER':'rest_frameworj_json_api.exceptions.exception_handler',
+    'DEFAULT_PARSER_CLASSES':(
+        'rest_framework.parsers.JSONParser',
+    ),
+    "DEFAULT_RENDERER_CLASSES":(
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer'
+    ),
+    'DEFAULT_FILTER_BACKENDS':(
+        'rest_framework_json_api.filters.QueryParameterValidationFilter',
+        'rest_framework_json_api.OrderingFilter',
+        'rest_framework_json_api.django_filters.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    )
+}
+
 
 ROOT_URLCONF = "backend.urls"
 
@@ -116,6 +140,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+MEDIA_URL = "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
