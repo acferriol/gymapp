@@ -21,7 +21,7 @@ class Plan(Model):
 class Pagos(Model):
     cliente = models.ForeignKey(Cliente,on_delete=models.DO_NOTHING,related_name="pagos_cli_rev")
     plan = models.ForeignKey(Plan,on_delete=models.DO_NOTHING,related_name="pagos_plan_rev")
-    fecha_pago = models.DateField(default=datetime.now().today())
+    fecha_pago = models.DateField(default=datetime.now().today().date())
 
     def get_vence(self):
         return self.fecha_pago + dt.timedelta(days=30)
