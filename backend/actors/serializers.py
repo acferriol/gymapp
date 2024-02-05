@@ -9,6 +9,8 @@ class UserSerializer(serializers.ModelSerializer):
         depth = 1
 
 class EmpleadoSerializer(serializers.ModelSerializer):
+    id=serializers.UUIDField(default=uuid.uuid4)
+    foto = serializers.ImageField(default='media/empleado_default.svg')
 
     class Meta:
         model = Empleado

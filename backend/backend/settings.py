@@ -59,19 +59,12 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER':'rest_frameworj_json_api.exceptions.exception_handler',
     'DEFAULT_PARSER_CLASSES':(
         'rest_framework.parsers.JSONParser',
     ),
     "DEFAULT_RENDERER_CLASSES":(
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer'
-    ),
-    'DEFAULT_FILTER_BACKENDS':(
-        'rest_framework_json_api.filters.QueryParameterValidationFilter',
-        'rest_framework_json_api.OrderingFilter',
-        'rest_framework_json_api.django_filters.DjangoFilterBackend',
-        'rest_framework.filters.SearchFilter',
     )
 }
 
