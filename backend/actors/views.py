@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, filters
 from rest_framework.parsers import MultiPartParser,FormParser
+from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import *
 from .models import *
 from .serializers import *
@@ -13,6 +14,7 @@ class EmpleadoViewset(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['nombre']
     ordering_fields = ['id']
+    
 
 class ClienteViewset(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()

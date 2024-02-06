@@ -42,3 +42,6 @@ class Cliente(Model):
     fecha_nacimiento = models.DateField(null=False,blank=False)
     foto = models.ImageField(upload_to="media" ,default='media/empleado_default.svg')
     empleados = models.ManyToManyField(Empleado,related_name="clientes_rev",blank=False)
+
+    def __str__(self) -> str:
+        return f"{self.nombre} {self.apellidos}"

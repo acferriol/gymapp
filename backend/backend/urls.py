@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework import routers
 from actors.views import *
+from utilities.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -26,6 +27,11 @@ router = routers.DefaultRouter()
 router.register("empleados",EmpleadoViewset,basename="empleados")
 router.register("users",UserViewset,basename="users")
 router.register("clientes",ClienteViewset,basename="clientes")
+router.register("notifications",NotificationViewset,basename="notifications")
+router.register("plan",PlanViewset,basename="planes")
+router.register("pagos",PagosViewset,basename="pagos")
+router.register("clases_particulares",ClaseParticularViewset,basename="clases_particulares")
+router.register("clases_grupo",ClaseGrupoViewset,basename="clases_grupo")
 
 
 urlpatterns = [
