@@ -20,6 +20,7 @@ from actors.views import *
 from utilities.views import *
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework.authtoken.views import obtain_auth_token
 
 
 router = routers.DefaultRouter()
@@ -36,5 +37,7 @@ router.register("clases_grupo",ClaseGrupoViewset,basename="clases_grupo")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api-token-auth", obtain_auth_token),
+    path("login/",LoginView.as_view(),name="login"),
     path("",include(router.urls)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
