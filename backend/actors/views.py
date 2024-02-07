@@ -20,7 +20,7 @@ class EmpleadoViewset(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['nombre','apellidos']
     ordering_fields = ['id']
-    permission_classes = (IsAuthenticated,AuthorizationPermission)
+    permission_classes = (IsAuthenticated,AuthorizationPermission,)
     
 
 class ClienteViewset(viewsets.ModelViewSet):
@@ -30,7 +30,7 @@ class ClienteViewset(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['nombre','apellidos']
     ordering_fields = ['id']
-    permission_classes = (IsAuthenticated)
+    permission_classes = (IsAuthenticated,)
     
 class UserViewset(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
@@ -39,7 +39,7 @@ class UserViewset(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['username']
     ordering_fields = ['id']
-    permission_classes = (IsAuthenticated,AuthorizationPermission)
+    permission_classes = (IsAuthenticated,AuthorizationPermission,)
 
 class LoginView(APIView):
     def post(self,request:Request):
