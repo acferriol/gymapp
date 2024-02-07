@@ -65,3 +65,5 @@ class LoginView(APIView):
         }
 
         return Response(data=content,status=status.HTTP_200_OK)
+
+

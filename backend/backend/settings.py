@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     ##-extra-apps-##
     'django_extensions',
     'phonenumber_field',
+    'drf_yasg',
+    #'django.contrib.staticfiles',
     'django_filters',
     'rest_framework',
     'rest_framework.authtoken',
