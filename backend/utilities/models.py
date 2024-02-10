@@ -5,6 +5,9 @@ import datetime as dt
 # Create your models here.
 
 class Notifications(Model):
+    """
+    Lleva la lógica de la comunicación mediante notificaciones
+    """
     remitente = models.ForeignKey(Empleado,on_delete=models.DO_NOTHING,related_name="send_rev")
     destinatarios = models.ManyToManyField(Empleado,related_name="recib_rev")
     recibido = models.BooleanField('Recibido', default=False)
@@ -16,6 +19,9 @@ class Notifications(Model):
 
 
 class Plan(Model):
+    """
+    Los planes del gimnasio
+    """
     tipo_memb = models.CharField(max_length=30, null=False)
     precio = models.FloatField(null=False,blank=False)
     descripcion = models.TextField(null=False,blank=False)
@@ -25,6 +31,9 @@ class Plan(Model):
 
 
 class Pagos(Model):
+    """
+    Pagos de un plan por parte de un cliente, registra fecha de pago
+    """
     cliente = models.ForeignKey(Cliente,on_delete=models.DO_NOTHING,related_name="pagos_cli_rev")
     plan = models.ForeignKey(Plan,on_delete=models.DO_NOTHING,related_name="pagos_plan_rev")
     fecha_pago = models.DateField(default=datetime.now().today().date())
@@ -40,6 +49,9 @@ class Pagos(Model):
 
 
 class ClaseParticular(Model):
+    """
+    Clases Particulares de Entrenador-Cliente
+    """
     cliente = models.ForeignKey(Cliente,on_delete=models.DO_NOTHING,related_name="clase_part_cli_rev")
     empleado = models.ForeignKey(Empleado,on_delete=models.DO_NOTHING,related_name="clase_part_emp_rev")
     hora = models.DateTimeField(null=False,blank=False)
@@ -50,6 +62,9 @@ class ClaseParticular(Model):
 
 
 class ClaseGrupo(Model):
+    """
+    Clases de Grupo, las da un empleado para un grupo de clientes
+    """
     empleado = models.ForeignKey(Empleado,on_delete=models.DO_NOTHING,related_name="clase_group_emp_rev")
     hora = models.DateTimeField(null=False,blank=False)
     descripcion = models.CharField(max_length=100,null=False,blank=False)

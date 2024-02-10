@@ -14,6 +14,10 @@ from .permissions import AuthorizationPermission
 # Create your views here.
 
 class EmpleadoViewset(viewsets.ModelViewSet):
+    """
+    Endpoints de la clase Empleado, GET,POST,PATCH,DELETE. Campos de busqueda [nombre, apellidos]
+    Campos de orden [id]
+    """
     queryset = Empleado.objects.all()
     serializer_class = EmpleadoSerializer
     parser_classes = (MultiPartParser,FormParser)
@@ -24,6 +28,10 @@ class EmpleadoViewset(viewsets.ModelViewSet):
     
 
 class ClienteViewset(viewsets.ModelViewSet):
+    """
+    Endpoints de la clase Cliente, GET,POST,PATCH,DELETE Campos de busqueda [nombre, apellidos]
+    Campos de orden [id]
+    """
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
     parser_classes = (MultiPartParser,FormParser)
@@ -33,6 +41,10 @@ class ClienteViewset(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     
 class UserViewset(viewsets.ModelViewSet):
+    """
+    Endpoints de la clase CustomUser, GET,POST,PATCH,DELETE Campos de busqueda [username]
+    Campos de orden [id]
+    """
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     parser_classes = (MultiPartParser,FormParser)
@@ -42,6 +54,9 @@ class UserViewset(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,AuthorizationPermission,)
 
 class LoginView(APIView):
+    """
+    Endpoint login devuelve el token del usuario para propagarlo en las llamadas a la API
+    """
     def post(self,request:Request):
         username = request.data.get('username')
         password = request.data.get("password")
