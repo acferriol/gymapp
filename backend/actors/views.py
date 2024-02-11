@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from rest_framework import viewsets, filters, status
 from rest_framework.parsers import MultiPartParser,FormParser
 from django_filters.rest_framework import DjangoFilterBackend
@@ -11,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import *
 from .serializers import *
 from .permissions import AuthorizationPermission
+from .utils import generate_card
 # Create your views here.
 
 class EmpleadoViewset(viewsets.ModelViewSet):
@@ -82,3 +84,23 @@ class LoginView(APIView):
         return Response(data=content,status=status.HTTP_200_OK)
 
 
+class GeneratePDFView(APIView):
+    """
+    Genera la card del cliente
+    """
+    def get(self,request:Request,id:str):
+        print(id)
+        cliente = get_object_or_404(Cliente, pk=id)
+        print(cliente)
+        url = reverse('clientes-detail',kwargs={'pk':id})
+        if cliente is not None:
+            route = generate_card(cliente.nombre,cliente.apellidos,url)
+            response = {
+                "message":"Credenciales Generadas",
+                "url": route
+            }
+            return Response(data=response,status=status.HTTP_200_OK)
+        else:
+            return Response(data={"Cliente no válido"},status=status.HTTP_404_NOT_FOUND)
+
+        

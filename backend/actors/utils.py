@@ -11,8 +11,8 @@ from reportlab.pdfgen import canvas
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 def generate_card(nombre,apellido,url):
-    path = "media/Tarjeta_"+nombre+"_"+apellido+".pdf"
-    path = str(BASE_DIR / path)
+    path_root = "media/Tarjeta_"+nombre+"_"+apellido+".pdf"
+    path = str(BASE_DIR / path_root)
     c = canvas.Canvas(path)
     text = c.beginText(25,25)
     text.setFont("Times-Roman",48)
@@ -21,6 +21,7 @@ def generate_card(nombre,apellido,url):
     path = generate_qrcode(url)
     c.drawImage(path,70,70)
     c.save()
+    return path_root
 
 
 def generate_qrcode(url):

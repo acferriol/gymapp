@@ -60,5 +60,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api-token-auth", obtain_auth_token),
     path("login/",LoginView.as_view(),name="login"),
+    path("card/<str:id>/",GeneratePDFView.as_view(),name="card"),
     path("",include(router.urls)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
