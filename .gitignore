@@ -1,5 +1,6 @@
 /node_modules
 /frontend/node_modules
+/backend/media
 /coverage
 /build
 /staticfiles
@@ -12,4 +13,5 @@
 *.png
 *.jpg
 *.svg
+*.pdf
 package-lock.json
