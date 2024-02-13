@@ -2,27 +2,47 @@ import React, { useState } from "react";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { CgGym } from "react-icons/cg";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../store/userSlice";
 
 const Login = () => {
-  const [seePasw, setseePaw] = useState(false);
+  
+  // Estados normales
+  const[seePasw, setseePaw] = useState(false);
   const[userName, setuserName] =useState("");
   const[pasword, setPasword] =useState("");
+
+  // Estados de Redux
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSeePasw = () => {
     setseePaw(!seePasw);
   };
 
-const handleSubmit = (e) =>{
-  e.preventDefault();
-  if([userName,pasword].includes("")){
-    toast.error("Todos los campos son obligatorios",{
-      theme: "dark"
-    });
-    return
+  let userCredencials = {userName,pasword};
+  const {error} = useSelector((state)=>state.user);
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    if([userName,pasword].includes("")){
+      toast.error("Todos los campos son obligatorios",{
+        theme: "dark"
+      });
+      return
+    }
+    else{ // Estado REdux , manejando estados Auth
+      dispatch(loginUser(userCredencials)).then((result)=>{
+        if(result.payload){
+          setuserName('');
+          setPasword('');
+          navigate('/home'); // si el resultado es correcto linkear 
+        }
+      })
+    }
+    //console.log(userName,pasword);
   }
-  console.log(userName,pasword);
-}
 
   return (
     <>
@@ -89,6 +109,12 @@ const handleSubmit = (e) =>{
                   Entrar
                 </button>
               </div>
+              {
+                error&&(
+                  toast.error(error,{
+                    theme: "dark"
+                  })
+                )}
             </form>
           </div>
         </div>
