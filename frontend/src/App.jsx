@@ -6,9 +6,9 @@ import Err404 from "./pages/404";
 import { useSelector } from "react-redux";
 
 export function App() {
-  const user = useSelector((state) => state.user);
+  const {isLogin} = useSelector((state) => state.user);
 
-  console.log(user);
+  console.log(isLogin);
 
   return (
     <Routes>
@@ -16,7 +16,7 @@ export function App() {
         <Route index element={<Login />} />
       </Route>
       <Route path="*" element={<Err404 />}></Route>
-      {user.isLogin ? (
+      {isLogin? ( //arreglar esto
         <Route path="/home" element={<Home />} />
       ) : (
         <Route path="/home" element={<Navigate to="/" replace />} />
