@@ -47,6 +47,7 @@ class Cliente(Model):
     """
     nombre = models.CharField(max_length=30, null=False,blank=False)
     apellidos = models.CharField(max_length=50, null=False,blank=False,unique=True)
+    email = models.EmailField(null=False,blank=True)
     telefono = models.CharField(max_length=8,unique=True)
     dni = models.CharField(max_length=11,unique=True,null=False,blank=False)
     fecha_registro = models.DateField(default=datetime.now().today().date())
