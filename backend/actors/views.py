@@ -60,14 +60,18 @@ class LoginView(APIView):
     Endpoint login devuelve el token del usuario para propagarlo en las llamadas a la API
     """
     def post(self,request:Request):
+        #username = request.data.get('username')
+        #password = request.data.get("password")
         username = request.data.get('username')
-        password = request.data.get("password")
+        password = request.data.get('password')
 
         user = authenticate(username=username,password=password)
+
         if user is not None:
             response = {
                 "message":"Login OK",
-                "token":user.auth_token.key
+                "token":user.auth_token.key,
+                "user":user.id,
             }
             return Response(data=response,status=status.HTTP_200_OK)
         else:
@@ -78,7 +82,7 @@ class LoginView(APIView):
     def get(self,request:Request):
         content = {
             "user":str(request.user),
-            "auth":str(request.auth)
+            "auth":str(request.auth),
         }
 
         return Response(data=content,status=status.HTTP_200_OK)

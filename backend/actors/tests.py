@@ -145,6 +145,7 @@ class LoginViewTest(APITestCase):
         #print(url)
         data = {'username': 'testuser4', 'password': 'testpassword4'}
         response = self.client.post(url, data,format='json')
+        #print(response,"Hello")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn('token', response.data)
 
