@@ -11,6 +11,9 @@ export default {
       },
       backgroundColor:{
         'gris-oscuro': '#2c2c2c',
+      },
+      padding:{
+        '100':'50rem'
       }
     },
   },
