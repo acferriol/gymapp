@@ -37,6 +37,7 @@ const sideBar = ( {user} ) => {
         ${isButtonActive('inicio')? 'text-blue-400':' text-gray-100'}
         `}
         onClick={()=>handleClick('inicio')}
+        to={'/home'}
         >
           <FaHouse />
           <span className="">Inicio</span>
