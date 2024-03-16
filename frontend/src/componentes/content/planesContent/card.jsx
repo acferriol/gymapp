@@ -10,7 +10,7 @@ const card = ({plan}) => {
       >
         <section className=' flex flex-col justify-center items-center'>
             <h1 className=' my-3 text-2xl font-light tracking-widest uppercase '>{plan}</h1>
-            <h1 className={`mt-2 py-3  px-5 rounded-xl ${plan==='plata'? ' bg-neutral-700' :' bg-sky-600'}
+            <h1 className={`mt-2 py-3  px-5 rounded-lg ${plan==='plata'? ' bg-neutral-700' :' bg-sky-600'}
               font-semibold text-4xl  shadow-lg shadow-gray-800`
               }>
               $ 2.00/ <span className=' text-lg text-gray-300'>Mes</span>

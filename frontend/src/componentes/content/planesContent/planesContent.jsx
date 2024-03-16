@@ -19,7 +19,7 @@ const planesContent = () => {
   return (
     <>
     <div className=' flex w-full justify-end '>
-      <Link to='#' 
+      <Link to={'/home/planes/modificar_planes'} 
         data-tooltip-id="my-tooltip"
         data-tooltip-content=" Modificar Planes!"
         data-tooltip-place="top"

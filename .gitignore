@@ -15,4 +15,3 @@
 *.svg
 *.pdf
 package-lock.json
-yarn.lock

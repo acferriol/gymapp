@@ -6,7 +6,7 @@ import {  RiCalendarFill , RiPriceTag2Fill} from "react-icons/ri";
 import { BiSolidReport } from "react-icons/bi";
 import { useState } from "react";
 import {  } from "./content/content";
-
+import { Avatar } from 'flowbite-react';
 
 const sideBar = ( {user} ) => {
 
@@ -24,9 +24,9 @@ const sideBar = ( {user} ) => {
   return (
     <div className=" h-full w-0 lg:w-72 bg-gris-oscuro border-r-2 border-neutral-500
       text-neutral-400 text-xl">
-      <div className=" flex flex-col items-center mb-7  gap-1">
-        <img src="" className=" border-2 border-neutral-700 w-28 h-28 rounded-full mt-4"/>
-        <h1 className=" text-neutral-50 font-medium ">
+      <div className=" flex flex-col items-center mb-7  gap-1 mt-10">
+      <Avatar rounded status="online" size="lg" />
+        <h1 className=" text-neutral-50 font-medium mt-2">
           {user.nombre}
         </h1>
         <hr className=" w-48 border-neutral-500 mt-4" />
@@ -47,6 +47,7 @@ const sideBar = ( {user} ) => {
         ${isButtonActive('cliente')? 'text-blue-400':' text-gray-100'}
         `}
         onClick={()=>handleClick('cliente')}
+        to={'/home/clientes'}
         >
           <HiUsers />
           <span className="">Clientes</span>
